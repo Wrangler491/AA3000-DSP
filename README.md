@@ -6,3 +6,4 @@ Unfortunately, the Information Manual scan ends part way through the document.  
 
 ASM32 - a DSP32C Assembler is available here: https://github.com/LegalizeAdulthood/asm32
 
+GCC machine description for AT&T DSP3210 is available here: https://www.circlemud.org/pub/dev3210/gcc/
