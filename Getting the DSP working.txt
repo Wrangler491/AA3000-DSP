@@ -1,0 +1,22 @@
+This note describes how to get the DSP3210 working on an AA3000+ motherboard designed by Hese.
+
+At the time of writing, this requires changes to the PAL equations on U122, U124 and U701 and a patch cable.
+
+
+PAL equations
+The equation (JED) files required are:
+U122-r11.jed
+U124-rev4.jed
+U701-r8.jed
+
+You will need to reprogram the relevant chips with these files.  When programming U122 and U124 you MUST select the chip type as the UES version of the chip.  In the programmer I use (XGPro), this is by selecting ATF22V10C (UES).  If you don't select the UES version, the DSP won't work.
+
+
+Patch cable
+The AA3000 rev 2 schematics list signal lines called RW and R_W.  Although they are called different things, these are the same signal line and must be connected together.
+
+One way to do this is to run a patch cable between U122 pin 5 and U124 pin 27.
+
+
+
+Any modifications to your hardware or software are done at your own risk!
