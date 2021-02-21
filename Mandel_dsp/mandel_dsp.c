@@ -302,7 +302,6 @@ volatile struct out_params *output_v = (struct out_params *) &dspcode[flag>>2];
 struct in_params *input_v = (struct in_params *) &dspcode[Maxiter>>2];;
 
 int processor = 2;
-int compatibility = 1;
 ULONG cache_orig, cache_curr, cache_recall;
 #define cache_mask 0x80000100		//copyback and data cache enable
 
@@ -364,16 +363,7 @@ void SetCtrl(ULONG val) {
 	ULONG mask = 0x4c;
 
 	do {
-		switch(compatibility)
-		{
-		case 0:
-			*dsp_write = (UBYTE)(val & 0xff);
-			break;
-
-		case 1:
-			for(i = 0; i<3; i++) *dsp_write = (UBYTE)(val & 0xff);
-			break;
-		}
+		*dsp_write = (UBYTE)(val & 0xff);
 
 		for (i = 0; i<256; ++i);
 		if ((*dsp_read & mask) == (val & mask)) break;
@@ -473,7 +463,7 @@ int main(int argc,char **argv)
 
 	if(argc!=2 && argc!=1)
 		{
-		printf("Usage mandel_dsp, with -c for compatibility mode\n");
+		printf("Usage mandel_dsp\n");
 		exit(EXIT_FAILURE);
 		}
 		
@@ -485,16 +475,6 @@ int main(int argc,char **argv)
 		y2=atof(argv[4]);
 		maxcount=atoi(argv[5]);
 		}*/
-	if(argc==2)
-		{
-			printf("argument is %s\n",argv[0]);
-		if(!strcasecmp(argv[1],"-c")) 
-		{ compatibility=1; } 
-		else 
-		{ printf("Usage mandel_dsp, with -c for compatibility mode\n");
-		exit(EXIT_FAILURE);
-		}
-	}
 
 	else	/* no arguments given */
 		{
@@ -507,9 +487,9 @@ int main(int argc,char **argv)
 		
 	printf("Original code by Erik Trulsson 1996.\n");
 	printf("DSP coding Wrangler Jan 2021 based on ARTABROT by George T Warner\n");
-	printf("Version 2.05\n");
+	printf("Version 2.10\n");
 	printf("Usage: double click to zoom, esc or q quits, Z zoom out\n");
-	printf("d use DSP, f use FPU, c to toggle DSP compatibility mode\n");
+	printf("d use DSP, f use FPU\n");
 
 	OpenDevice("timer.device", 0, &timereq, 0);
 	TimerBase = timereq.io_Device;
@@ -702,7 +682,6 @@ void HandleMsg(void)
 					case 'd':
 					case 'D':
 						processor = 1;
-						//printf("compatibility flag is %d\n", compatibility);
 						//if(compatibility) cache_curr = CacheControl(0x0, cache_mask);	//turn off data cache
 						ReplyMsg((struct Message *)msg);
 						longjmp(jb,1);
@@ -713,13 +692,6 @@ void HandleMsg(void)
 						//cache_curr = CacheControl(cache_orig, cache_mask);	//restore cache 
 						ReplyMsg((struct Message *)msg);
 						longjmp(jb,1);
-						//exit(EXIT_FAILURE); /* should never reach here */
-					case 'c':
-					case 'C':
-						compatibility = 1-compatibility;
-						printf("Compatibility mode is now %d\n", compatibility);
-						ReplyMsg((struct Message *)msg);
-						return;
 						//exit(EXIT_FAILURE); /* should never reach here */
 					}
 			}				
@@ -851,5 +823,3 @@ void drawmandel(void)
 		}
 	}
 
-
-	
