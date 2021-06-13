@@ -6,4 +6,4 @@ U124 PAL equations contained errors in the equations for dspINT1 and dspMI6.  Th
 Unfortunately, the Information Manual scan ends part way through the document.  Let me know if you have the complete thing!
 
 
-GCC machine description for AT&T DSP3210 is available here: https://www.circlemud.org/pub/dev3210/gcc/
+GCC machine description for AT&T DSP3210 is available here: https://www.circlemud.org/pub/dev3210/gcc/.  Check out the xgcc directory for a working binary!
