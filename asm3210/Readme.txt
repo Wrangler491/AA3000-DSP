@@ -1,9 +1,12 @@
 
 *** EXPERIMENTAL - THERE WILL BE BUGS!!***
 
-This is an implementation of am assembler compiler for the DSP3210.  The host machine needs to be x86 running linux (I use cygwin64, so that definitely works but other linux-type OSes ought to work).  
+This is an implementation of am assembler compiler for the DSP3210.  The host machine needs 
+to be x86 running linux (I use cygwin64, so that definitely works but other linux-type OSes 
+ought to work).  
 
-Created building on the work of Tom Roberts' ASM32 for the DSP32C, with many amendments by Wrangler 2021.
+Created building on the work of Tom Roberts' ASM32 for the DSP32C, with many amendments 
+by Wrangler 2021.
 
 Usage:
 
@@ -25,6 +28,7 @@ Notes:
 	  sign-extend the value...
 - No support for #defines yet - hopefully in the next version
 - No symbol table is created (yet)
+- The assembler skips directives such as .global and @P, so no syntax error but no code is generated either
 - Updates to the files might happen at any time.
 
 For bug reports, find me on a1k.org
