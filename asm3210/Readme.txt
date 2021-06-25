@@ -1,7 +1,7 @@
 
 *** EXPERIMENTAL - THERE WILL BE BUGS!!***
 
-This is an implementation of am assembler compiler for the DSP3210.  The host machine needs 
+This is an implementation of an assembler for the DSP3210.  The host machine needs 
 to be x86 running linux (I use cygwin64, so that definitely works but other linux-type OSes 
 ought to work).  
 
