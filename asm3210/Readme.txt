@@ -22,20 +22,21 @@ Notes:
 	  asm3210 uses "set", so a straight 16 bit load to r1 whereas
 	  d32as assembles it as r1 = r0 + 1 ie "add" (remembering r0 is always 0)
 	- d32as assembles r1 = 0xC0FFEE as a 32 bit load over two instructions
-	  The DSP Information Manual says "set24" will load 24 unsigned values, so 
-	  asm3210 assembles this instruction like that saving 4 bytes(!)
-	  Let me know is this is an error in the manual though and the chip does actually
-	  sign-extend the value...
-- No support for #defines yet - hopefully in the next version
+	  asm3210 assembles this instruction using 24 unsigned values saving 4 bytes(!)
 - No symbol table is created (yet)
 - The assembler skips directives such as .global and @P, so no syntax error but no code is generated either
 - Updates to the files might happen at any time.
 
 For bug reports, find me on a1k.org
 
-Wrangler 25/6/2021
+Wrangler 19/7/2021
 
 Version log:
+
+19/7/2021
+Defines now supported - asm3210 will assemble the source for mandel_dsp
+Added the instructions rD = rS * 2 and rD = rS / 2, which just map to add and arithmetic
+shift right instructions
 
 25/6/2021
 First version
