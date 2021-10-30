@@ -6,3 +6,4 @@ Use this code however you like but you must credit me, Erik Trulsson and George 
 Compiles with VBCC, ASM3210 and elf2exem68k
 
 Code is updated to latest development version which includes genuine parallel processing between DSP and CPU for a big speed gain
+This is version 3.12 which features much tidier code and the FPU using native instructions
