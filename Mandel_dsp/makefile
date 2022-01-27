@@ -18,11 +18,11 @@ mandelfinal.o: m68kfinal.o mandel.o DSP3210_init.o
 	vlink -r -b elf32ppcbe -o mandelfinal.o m68kfinal.o mandel.o DSP3210_init.o
 
 mandel.o: mandel.s
-	../asm32-master/asm3210 -o mandel.o mandel.s
+	asm3210 -o mandel.o mandel.s
 
 DSP3210_init.o: DSP3210_init.s
-	../asm32-master/asm3210 -o DSP3210_init.o DSP3210_init.s
+	asm3210 -o DSP3210_init.o DSP3210_init.s
 
 mandel_dsp.exe: mandelfinal.o
-	../elf2exem68k/elf2exem68k.exe -o mandel_dsp.exe mandelfinal.o
+	elf2exem68k -o mandel_dsp.exe mandelfinal.o
 	
