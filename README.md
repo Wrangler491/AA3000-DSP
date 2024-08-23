@@ -3,6 +3,6 @@ All things to do with the DSP on the AA3000+
 
 U124 PAL equations contained errors in the equations for dspINT1 and dspMI6.  The files here correct those errors.
 
-Unfortunately, the Information Manual scan ends part way through the document.  Let me know if you have the complete thing!
-
+The critical Information Manual that provides all the detail about the DSP is here, split into sections
+in order to meet the filesize limits on Github
 
